@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-surface-start to-surface-end min-h-screen text-slate-800 font-sans antialiased m-0;
+    /* Ambient radial gold glow */
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+      linear-gradient(to bottom right, #fdfbfb, #ebedee);
+  }
+}
+
+/* Custom scrollbar for dropdowns if needed */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
