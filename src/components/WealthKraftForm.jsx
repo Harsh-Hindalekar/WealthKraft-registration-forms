@@ -10,6 +10,7 @@ import Step4 from './steps/Step4';
 import Step5 from './steps/Step5';
 import { cn } from '../lib/utils';
 import { CheckCircle2 } from 'lucide-react';
+import ImageSlider from './ImageSlider';
 
 export default function WealthKraftForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -104,53 +105,69 @@ export default function WealthKraftForm() {
   };
 
   return (
-    <>
+    <div className="flex flex-col w-full h-full">
       <TopBar />
-      <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
-      <LoadingOverlay isVisible={isLoading} />
-      
-      <div className="flex-1 relative overflow-y-auto overflow-x-hidden flex flex-col pb-12">
-        <AnimatePresence mode="wait">
-          {!isLoading && renderStep()}
-        </AnimatePresence>
+      <div className="flex justify-center mb-8">
+        <span className="bg-[#cca333] text-white font-bold px-8 py-2 rounded-xl text-lg shadow-sm text-center">
+          Building Wealth in Peaceful Way
+        </span>
+      </div>
 
-        <div className="px-6 pb-6 flex items-center justify-between bg-white z-10">
-          {currentStep > 0 ? (
-            <button 
-              onClick={handleBack}
-              disabled={isLoading}
-              className="px-6 py-3 rounded-xl font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
-            >
-              Back
-            </button>
-          ) : <div />}
+      <div className="flex-1 flex flex-col lg:flex-row gap-8 lg:gap-12 w-full h-full">
+        {currentStep === 0 && (
+          <div className="w-full lg:w-[380px] xl:w-[420px] shrink-0 min-h-[400px] lg:border-r border-slate-100 lg:pr-8 mb-8 lg:mb-0">
+            <ImageSlider />
+          </div>
+        )}
+        
+        <div className="flex-1 flex flex-col w-full h-full max-w-3xl mx-auto">
+          <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
+          <LoadingOverlay isVisible={isLoading} />
+          
+          <div className="flex-1 overflow-y-auto pt-4 md:pt-8 w-full">
+            <AnimatePresence mode="wait">
+              {!isLoading && renderStep()}
+            </AnimatePresence>
+          </div>
 
-          {currentStep < totalSteps - 1 ? (
-            <button 
-              onClick={handleNext}
-              disabled={isLoading}
-              className="px-8 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-primary-gold to-secondary-gold hover:-translate-y-1 hover:shadow-input-focus transition-all ml-auto"
-            >
-              Next
-            </button>
-          ) : (
-            <button 
-              onClick={handleSubmit}
-              disabled={isLoading || isSubmitted}
-              className={cn(
-                "px-8 py-3 rounded-xl font-bold text-white transition-all ml-auto flex items-center gap-2",
-                isSubmitted 
-                  ? "bg-green-500 hover:bg-green-600" 
-                  : "bg-gradient-to-r from-primary-gold to-secondary-gold hover:-translate-y-1 hover:shadow-input-focus"
-              )}
-            >
-              {isSubmitted ? (
-                <>Submitted <CheckCircle2 size={18} strokeWidth={3} /></>
-              ) : "Submit"}
-            </button>
-          )}
+          <div className="pt-8 flex items-center justify-between bg-white z-10 w-full">
+            {currentStep > 0 ? (
+              <button 
+                onClick={handleBack}
+                disabled={isLoading}
+                className="px-6 py-3 rounded-xl font-semibold text-slate-600 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200"
+              >
+                Back
+              </button>
+            ) : <div />}
+
+            {currentStep < totalSteps - 1 ? (
+              <button 
+                onClick={handleNext}
+                disabled={isLoading}
+                className="px-8 py-3 rounded-xl font-bold text-white bg-[#cca333] hover:bg-[#b38f2c] transition-all ml-auto shadow-md shadow-[#cca333]/20"
+              >
+                Next
+              </button>
+            ) : (
+              <button 
+                onClick={handleSubmit}
+                disabled={isLoading || isSubmitted}
+                className={cn(
+                  "px-8 py-3 rounded-xl font-bold text-white transition-all ml-auto flex items-center gap-2 shadow-md shadow-[#cca333]/20",
+                  isSubmitted 
+                    ? "bg-green-500 hover:bg-green-600 shadow-green-500/20" 
+                    : "bg-[#cca333] hover:bg-[#b38f2c]"
+                )}
+              >
+                {isSubmitted ? (
+                  <>Submitted <CheckCircle2 size={18} strokeWidth={3} /></>
+                ) : "Submit"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
