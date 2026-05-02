@@ -107,10 +107,10 @@ export default function WealthKraftForm() {
   return (
     <div className="flex flex-col w-full h-full">
       <TopBar />
-      <div className="flex justify-center mb-8">
-        <span className="bg-[#cca333] text-white font-bold px-8 py-2 rounded-xl text-lg shadow-sm text-center">
-          Building Wealth in Peaceful Way
-        </span>
+      <div className="flex justify-center mb-8 w-full px-4 md:px-8">
+        <div className="bg-[#cca333] text-white font-bold w-full max-w-3xl py-4 rounded-2xl shadow-md text-center">
+          <span className="text-xl md:text-2xl tracking-wide">Building Wealth in Peaceful Way</span>
+        </div>
       </div>
 
       <div className="flex-1 flex flex-col lg:flex-row gap-8 lg:gap-12 w-full h-full">
@@ -135,7 +135,7 @@ export default function WealthKraftForm() {
               <button 
                 onClick={handleBack}
                 disabled={isLoading}
-                className="px-6 py-3 rounded-xl font-semibold text-slate-600 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200"
+                className="px-6 py-3 rounded-xl font-semibold text-slate-600 bg-slate-50 hover:bg-slate-100 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 border border-slate-200 hover:shadow-sm"
               >
                 Back
               </button>
@@ -145,7 +145,7 @@ export default function WealthKraftForm() {
               <button 
                 onClick={handleNext}
                 disabled={isLoading}
-                className="px-8 py-3 rounded-xl font-bold text-white bg-[#cca333] hover:bg-[#b38f2c] transition-all ml-auto shadow-md shadow-[#cca333]/20"
+                className="px-8 py-3 rounded-xl font-bold text-white bg-[#cca333] hover:bg-[#b38f2c] hover:-translate-y-0.5 hover:shadow-lg active:scale-95 transition-all duration-300 ml-auto shadow-md shadow-[#cca333]/20"
               >
                 Next
               </button>
@@ -154,10 +154,10 @@ export default function WealthKraftForm() {
                 onClick={handleSubmit}
                 disabled={isLoading || isSubmitted}
                 className={cn(
-                  "px-8 py-3 rounded-xl font-bold text-white transition-all ml-auto flex items-center gap-2 shadow-md shadow-[#cca333]/20",
+                  "px-8 py-3 rounded-xl font-bold text-white hover:-translate-y-0.5 hover:shadow-lg active:scale-95 transition-all duration-300 ml-auto flex items-center gap-2 shadow-md",
                   isSubmitted 
                     ? "bg-green-500 hover:bg-green-600 shadow-green-500/20" 
-                    : "bg-[#cca333] hover:bg-[#b38f2c]"
+                    : "bg-[#cca333] hover:bg-[#b38f2c] shadow-[#cca333]/20"
                 )}
               >
                 {isSubmitted ? (
