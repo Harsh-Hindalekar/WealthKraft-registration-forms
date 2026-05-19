@@ -107,3 +107,4 @@ export default function Step1({ data, updateData, errors }) {
     </StepWrapper>
   );
 }
+
