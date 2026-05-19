@@ -295,3 +295,4 @@ function ThoughtCard({ text, index, isDesktop = false }) {
     </motion.div>
   );
 }
+
